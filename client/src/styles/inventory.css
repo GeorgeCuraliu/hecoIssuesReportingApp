@@ -1,0 +1,18 @@
+.tableContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--hecoGray);
+    border: 2px solid var(--hecoGrayDark);
+    height: 4vh;
+}
+.tableCat{
+    margin-left: 0vw;
+    margin-right: 0vw;
+    color: var(--hecoGrayDark);
+    font-size: 2.5vh;
+    width: 33vw;
+    height: 100%;
+    text-align: center;
+    border: 2px solid var(--hecoGrayDark);
+}

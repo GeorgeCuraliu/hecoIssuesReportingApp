@@ -1,0 +1,15 @@
+.addButton{
+    display: flex;
+    width: 25vw;
+    margin-top: 2vh;
+    margin-left: 45vw;
+    aspect-ratio: 2/1;
+    background-color: var(--hecoGray);
+    border: 2px solid var(--hecoOrange);
+    color: var(--hecoOrange);
+    font-weight: bold;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5vh;
+}

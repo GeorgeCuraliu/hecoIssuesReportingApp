@@ -1,24 +1,27 @@
 import logo from './logo.svg';
+import {Route, Router, Routes} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
-
+import LoginPage from './Login/login.js';
+import Header from './GlobalComponents/header';
+import Main from './MainPage/main';
+import Inventory from './Inventory/inventory';
+import MachineList from './machineList/machineList';
+import ProblemList from './ProblemList/problemList';
+import Registry from './Registry/registry';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<Main/>} />
+        <Route path="/inventory" element={<Inventory/>}/>
+        <Route path="/machineList" element={<MachineList/>}/>
+        <Route path="/problemList" element={<ProblemList/>}/>
+        <Route path="/registry" element={<Registry/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
