@@ -9,10 +9,33 @@
 .tableCat{
     margin-left: 0vw;
     margin-right: 0vw;
+    color: var(--hecoGray);
+    background-color: rgb(163, 161, 161);
+    font-size: 2.5vh;
+    font-weight: bold;
+    width: 33vw;
+    height: 100%;
+    text-align: center;
+    border: 2px solid var(--hecoGrayDark);
+}
+.tableCatItem{
+    margin-left: 0vw;
+    margin-right: 0vw;
     color: var(--hecoGrayDark);
     font-size: 2.5vh;
     width: 33vw;
     height: 100%;
     text-align: center;
     border: 2px solid var(--hecoGrayDark);
+}
+@media screen and (min-width: 550px) {
+    .tableContent{
+        height: 8vh;
+    }
+    .tableCat{
+        font-size: 5vh;
+    }
+    .tableCatItem{
+        font-size: 5vh;
+    }
 }

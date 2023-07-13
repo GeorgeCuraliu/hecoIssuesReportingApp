@@ -38,7 +38,33 @@ input, select, textarea{
 }
 .body{
     background-color: var(--backgroundOrange);
-    height: 90vh;
     display: flex;
     flex-direction: column;
 }
+@media screen and (min-width: 550px) {
+    .input{
+        height: 10vh;
+        border: 4px solid var(--hecoOrange);
+        border-radius: 20px;
+    }
+    .text{
+        color: #6C6C6C;
+        font-weight: bold;
+        font-size: 5vh;
+    }
+    .pic{
+        display: none;
+    }
+    .button{
+        display: flex;
+        width: 40vw;
+        margin-left: 50%;
+        margin-top: 7vh;
+        aspect-ratio: 10/1;
+    }
+    .arrow{
+        width: 10vw;
+    }
+}
+
+    

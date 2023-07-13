@@ -24,7 +24,7 @@ header{
     font-size: 6vh;
     font-weight: bold;
     font-style: italic;
-    z-index: 999;
+    z-index: 90;
 }
 .space{
     height: 100vh;
@@ -65,4 +65,28 @@ header{
 .flex{
     display: flex;
     flex-direction: row;
+}
+@media screen and (min-width: 550px) {
+    .line{
+        height: 5vh;
+    }
+    .logo{
+        height: 20vh;
+        width: 25vw;
+        margin-left: 5vw;
+        margin-bottom: 2vh;
+    }
+    .logo2{
+        height: 35vh;
+        width: 35vw;
+        margin-left: 30vw;
+    }
+    header{
+        height: 20vh;
+        width: 100vw;
+    }
+    .backButton{
+        aspect-ratio: 5/1;
+        font-size: 7vh;
+    }
 }

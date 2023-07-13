@@ -15,6 +15,7 @@ const Main = () => {
                             <div>Logged in as: </div>
                             <div>username</div>
                         </div>
+                        <button className="logOutButton" onClick={() => {nav("/admin")}}>Admin</button>
                         <button className="logOutButton" onClick={() => {nav("/login")}}>Log Out</button>
                     </div>
                     <div className="line"></div>
@@ -22,7 +23,7 @@ const Main = () => {
                         <button className="toolButton" onClick={() => {nav("/inventory")}}>Inventar</button>
                         <button className="toolButton" onClick={() => {nav("/machineList")}}>Masina +/-</button>
                         <button className="toolButton" onClick={() => {nav("/registry")}}>Modificare registru</button>
-                        <button className="toolButton">Raporteaza o problema</button>
+                        <button className="toolButtonPhone">Raporteaza o problema</button>
                         <button className="toolButton" onClick={() => {nav("/problemList")}}>Vizualizare probleme tehnice</button>
                     </div>
                 </div>

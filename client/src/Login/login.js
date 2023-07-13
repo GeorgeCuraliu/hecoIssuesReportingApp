@@ -18,7 +18,7 @@ const LoginPage = () => {
                     <input className="input"/>
                     <div className="text">Password</div>
                     <input className="input"/>
-                    <button className="button" onClick={() => {nav("/")}}><img src={RightArrow}/></button>
+                    <button className="button" onClick={() => {nav("/")}}><img src={RightArrow} className="arrow"/></button>
                 </div>
             }/>
         </div>

@@ -1,9 +1,19 @@
+.inputID::placeholder {
+    color:black;
+    letter-spacing: 10px;
+    font-size: 5vh;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 .addButton{
     display: flex;
     width: 25vw;
     margin-top: 2vh;
     margin-left: 45vw;
-    aspect-ratio: 2/1;
+    aspect-ratio: 5/1;
     background-color: var(--hecoGray);
     border: 2px solid var(--hecoOrange);
     color: var(--hecoOrange);
@@ -11,5 +21,114 @@
     border-radius: 10px;
     justify-content: center;
     align-items: center;
-    font-size: 2.5vh;
+    font-size: 7vh;
+}
+.popUp{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15vw;
+    margin-top: 10vh;
+    position: fixed;
+    height: 60vh;
+    width: 70vw;
+    background-color: rgba(20, 76, 220, 0.8);
+    border-radius: 20px;
+}
+.blur{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    backdrop-filter: blur(4px);
+    z-index: 999;
+}
+.s1{
+    background-color: 0;
+    width: 50%;
+    height: 100%;
+}
+
+.s3{
+    width: 100%;
+    height: 50%;
+}
+.s4{
+    display: flex;
+    height: 50%;
+    width: 100%;
+}
+.machineID{
+    font-size: 5vh;
+    margin-top: 7vh;
+    margin-left: 10vw;
+    color: white;
+}
+.inputID{
+    margin-left: 13vw;
+    margin-top: 2vh;
+    padding-top: 1vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    border-radius: 5px;
+    width: 9vw;
+    height: 6vh;
+    font-size: 5vh;
+    justify-content: center;
+    letter-spacing: 10px;
+}
+.dropdown{
+    position: relative;
+}
+.dropdownText{
+    display: flex;
+    margin-left: 8vw;
+    margin-top: 2vh;
+    border-radius: 5px;
+    
+    width: 10vw;
+    height: 7vh;
+    font-size: 3vh;
+    font-weight: bold;    
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-color: white;
+}
+.dropdownText:hover{
+    border-end-end-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.dropdownContent{
+    display: flex;
+    flex-direction: column;
+    z-index: 9999;
+    position: absolute;
+    margin-left: 8vw;
+    width: 10vw;
+}
+.hangerButton{
+    background-color: beige;
+    color: black;
+    font-weight: bold;
+}
+.hangerButton:hover{
+    border: 2px solid black;
+}
+.addButton2{
+    display: flex;
+    width: 20vw;
+    margin-top: 2vh;
+    margin-left: 22.5vw;
+    aspect-ratio: 5/1;
+    background-color: var(--hecoGray);
+    color: black;
+    font-weight: bold;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vh;
+}
+@media screen and (max-width: 550px) {
+    .addButton{
+        display: none;
+    }
 }

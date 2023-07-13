@@ -9,6 +9,7 @@ import Inventory from './Inventory/inventory';
 import MachineList from './machineList/machineList';
 import ProblemList from './ProblemList/problemList';
 import Registry from './Registry/registry';
+import Admin from './admin/admin';
 function App() {
   return (
     
@@ -20,6 +21,7 @@ function App() {
         <Route path="/machineList" element={<MachineList/>}/>
         <Route path="/problemList" element={<ProblemList/>}/>
         <Route path="/registry" element={<Registry/>}/>
+        <Route path="/admin" element={<Admin/>}/>
       </Routes>
     </BrowserRouter>
   );

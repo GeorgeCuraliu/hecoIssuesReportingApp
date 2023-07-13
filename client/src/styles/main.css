@@ -15,11 +15,23 @@
     color: var(--backgroundOrange);
     font-size: 4vh;
 }
+.toolButtonPhone{
+    display: flex;
+    width: 80vw;
+    margin-top: 5%;
+    aspect-ratio: 3.25/1;
+    background-color: var(--hecoOrange);
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    color: var(--backgroundOrange);
+    font-size: 4vh;
+}
 .logOutButton{
     display: flex;
     width: 30vw;
     margin-top: 2vh;
-    aspect-ratio: 2/1;
+    aspect-ratio: 10/1;
     background-color: var(--hecoOrange);
     border: 2px solid var(--hecoGray);
     color: var(--hecoGray);
@@ -39,4 +51,31 @@
 }
 .topSection{
     display: flex;
+}
+@media screen and (min-width: 550px) {
+    .toolButton{
+        aspect-ratio: 5/1;
+        width: 30vw;
+        margin-left: 12.5vw;
+    }
+    .toolButtonPhone{
+        display: none;
+    }
+    .logOutButton{
+        width: 10vw;
+        
+        margin-left: 1vw;
+        font-size: 5vh;
+    }
+    .topText{
+        font-size: 5vh;
+        margin-left: 3vw;
+        width: 50vw;
+    }
+    .toolBox{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+    }
 }

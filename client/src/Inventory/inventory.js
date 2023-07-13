@@ -21,9 +21,9 @@ const Inventory = () => {
                             <div className="tableCat">Amount</div>
                         </div>
                         <div className="tableContent">
-                            <div className="tableCat">34</div>
-                            <div className="tableCat">Surub</div>
-                            <div className="tableCat">40000</div>
+                            <div className="tableCatItem">34</div>
+                            <div className="tableCatItem">Surub</div>
+                            <div className="tableCatItem">40000</div>
                         </div>
                     </div>
                 </div>
