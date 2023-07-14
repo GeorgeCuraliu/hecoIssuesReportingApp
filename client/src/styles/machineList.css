@@ -3,8 +3,8 @@
     letter-spacing: 10px;
     font-size: 5vh;
 }
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+.input::-webkit-outer-spin-button,
+.inputID::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
@@ -43,7 +43,7 @@ input::-webkit-inner-spin-button {
 }
 .s1{
     background-color: 0;
-    width: 50%;
+    width: 33%;
     height: 100%;
 }
 
@@ -59,11 +59,39 @@ input::-webkit-inner-spin-button {
 .machineID{
     font-size: 5vh;
     margin-top: 7vh;
-    margin-left: 10vw;
+    margin-left: 8vw;
     color: white;
 }
+.machineDate{
+    margin-top: 7vh;
+    margin-left: 2vw;
+    color: white;
+    font-size: 5vh;
+    width: 100%;
+}
+.inputDate{
+    margin-left: 1vw;
+    margin-top: 2vh;
+    padding-top: 0vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    border-radius: 5px;
+    width: 4vw;
+    height: 6vh;
+    font-size: 3vh;
+    justify-content: center;
+    text-align: center  ;
+}
+.inputDate::placeholder{
+    font-size: 3vh;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+}
+
 .inputID{
-    margin-left: 13vw;
+    margin-left: 8vw;
     margin-top: 2vh;
     padding-top: 1vh;
     padding-left: 1vw;
@@ -73,6 +101,7 @@ input::-webkit-inner-spin-button {
     height: 6vh;
     font-size: 5vh;
     justify-content: center;
+    text-align: center;
     letter-spacing: 10px;
 }
 .dropdown{
@@ -83,7 +112,6 @@ input::-webkit-inner-spin-button {
     margin-left: 8vw;
     margin-top: 2vh;
     border-radius: 5px;
-    
     width: 10vw;
     height: 7vh;
     font-size: 3vh;
@@ -113,10 +141,11 @@ input::-webkit-inner-spin-button {
 .hangerButton:hover{
     border: 2px solid black;
 }
+
 .addButton2{
     display: flex;
     width: 20vw;
-    margin-top: 2vh;
+    margin-top: 10vh;
     margin-left: 22.5vw;
     aspect-ratio: 5/1;
     background-color: var(--hecoGray);

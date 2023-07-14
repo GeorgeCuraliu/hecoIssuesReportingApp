@@ -66,6 +66,12 @@ header{
     display: flex;
     flex-direction: row;
 }
+.flexCenter{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
 @media screen and (min-width: 550px) {
     .line{
         height: 5vh;

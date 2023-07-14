@@ -4,19 +4,36 @@ import Body from "../GlobalComponents/body";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useRef } from "react";
+import axios from "axios";
 const MachineList = () => {
+
     
+
+    const addMachine = () => {
+        axios.post("http://localhost:6969/createMachine", )
+    }
+
     const [num, setNum] = useState();
+    const [num2, setNum2] = useState();
+
     const [pop, setPop] = useState(false);
     const [drop, setDrop] = useState(false);
     const [text, setText] = useState(false);
+    const [drop2, setDrop2] = useState(false);
+    const [text2, setText2] = useState(false);
 
     const nav = useNavigate();
     let temp = useRef();
+    let temp2 = useRef();
 
     const updateData = (e) => {
         if(e.target.value.length < 4) {
             setNum(e.target.value);
+        }
+    } 
+    const updateData2 = (e) => {
+        if(e.target.value.length < 3 && e.target.value < 25 && e.target.value > 0) {
+            setNum2(e.target.value);
         }
     } 
 
@@ -25,7 +42,11 @@ const MachineList = () => {
         setText(true)
         setDrop(false)
     }
-    
+    const testing2 = (props) => {
+        temp2.current = props
+        setText2(true)
+        setDrop2(false)
+    }
 
     return (
         <div>
@@ -38,6 +59,25 @@ const MachineList = () => {
                                 <div className="s1">
                                     <div className="machineID" >Cod Masina</div>
                                     <input value={num} className="inputID" type = "number" placeholder="XXX" maxLength="3" onChange={(e) => {updateData(e)}}/>
+                                </div>
+                                <div className="s1">
+                                    <div className="machineDate" >Data de mentenanta</div>
+                                    <div className="flexCenter">
+                                        <input value={num2} className="inputDate" placeholder="Ora" type="number" maxLength="2" onChange={(f) => {updateData2(f)}}/>
+                                        <div className="dropdown">
+                                            {!text2 && <div className="dropdownText" onMouseLeave={() => {setDrop2(false)}} onMouseEnter={() => {setDrop2(true)}}>Alege</div>}
+                                            {text2 && <div className="dropdownText" onMouseLeave={() => {setDrop2(false)}} onMouseEnter={() => {setDrop2(true)}}>{temp2.current}</div>}
+                                            {drop2 && <div className="dropdownContent" onMouseLeave={() => {setDrop2(false)}} onMouseEnter={() => {setDrop2(true)}}>
+                                                <button className="hangerButton" onClick={() => {testing2("Luni")}}>Luni</button>
+                                                <button className="hangerButton" onClick={() => {testing2("Marti")}}>Marti</button>
+                                                <button className="hangerButton" onClick={() => {testing2("Miercuri")}}>Miercuri</button>
+                                                <button className="hangerButton" onClick={() => {testing2("Joi")}}>Joi</button>
+                                                <button className="hangerButton" onClick={() => {testing2("Vineri")}}>Vineri</button>
+                                                <button className="hangerButton" onClick={() => {testing2("Sambata")}}>Sambata</button>
+                                                <button className="hangerButton" onClick={() => {testing2("Duminica")}}>Duminica</button>
+                                            </div>}
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="s1">
                                     <div className="machineID">Hall</div>
