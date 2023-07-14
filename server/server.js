@@ -12,13 +12,13 @@ const path = './db/hecoAppDB.db';
 const db = new sqlite3.Database(path);
 
 
-app.post("/createAccount", (req, res) => {//req.body.username  req.body.password   req.body.name   req.body.gmail
+app.post("/createAccount", (req, res) => {//req.body.username  req.body.password   req.body.name   req.body.gmail req.body.admin
     let query = `SELECT * FROM users WHERE username = ?`;
         db.get(query, [req.body.username], (err, row) => {
             if(err){return (err)}
             console.log(row)
             if(!row){
-                db.run(`INSERT INTO users(username, password, name, gmail) VALUES ("${req.body.username}", "${req.body.password}", "${req.body.name}", "${req.body.gmail}")`)
+                db.run(`INSERT INTO users(username, password, name, gmail, admin) VALUES ("${req.body.username}", "${req.body.password}", "${req.body.name}", "${req.body.gmail}", "${req.body.admin}")`)
                 console.log("created account");
                 return res.status(200).send()
             }else{
@@ -72,7 +72,7 @@ app.post("/deleteMachine", (req, res) => {//req.body.code
 
 })
 
-app.post("/getMachines", (req) => {
+app.get("/getMachines", (req, res) => {
 
     let query = "SELECT * FROM machineRegistry";
     db.all(query, [], (err, rows) => {
@@ -106,6 +106,29 @@ app.post("/createRepairRequest", (req, res) => {//req.body.machineCode  req.body
 })
 
 
+app.post("/addTool", (req, res) => {        //req.body.code     req.body.cabinetCode   req.body.rowCode   req.body.pieces
+
+    db.run(`INSERT INTO partsRegistry(code, cabinetCode, rowCode, pieces) VALUES ("${req.body.code}", "${req.body.cabinetCode}", "${req.body.rowCode}", "${req.body.pieces}")`, err => {
+        console.log("added tool")
+        return res.status(200).send()
+    })
+
+})
+
+app.post("/modifyToolInfo", (req, res) => {  //req.body.code  req.body.changeCategory   req.body.newValue
+
+    db.run(`UPDATE partsRegistry SET ${req.body.changeCategory} = "${req.body.newValue}" WHERE code = "${req.body.code}"`, err => {
+        if(err) return res.status(400).send();
+        
+        return res.status(200).send();
+    })
+
+})
+
+const repairComplete = (req) => {//req.body.
+
+}
+
 
 
 
@@ -116,6 +139,9 @@ app.post("/createRepairRequest", (req, res) => {//req.body.machineCode  req.body
 //deleteMachine({body: {code: 312}})
 //getMachines()
 //createRepairRequest({body:{ by: "awd", machineCode: 112, targetGroup: "daw", issue: "wda"}})
+//addTool({body: {code: 9132, cabinetCode: 1, rowCode: 2, pieces: 32}});
+//modifyToolInfo({body: {changeCategory: "cabinetCode", code: 6969, newValue: 3}})
+
 
 
 app.listen(port, () => {
