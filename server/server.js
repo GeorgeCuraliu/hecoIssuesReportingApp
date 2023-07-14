@@ -125,9 +125,50 @@ app.post("/modifyToolInfo", (req, res) => {  //req.body.code  req.body.changeCat
 
 })
 
-const repairComplete = (req) => {//req.body.
+app.post("/repairComplete", (req, res) => {//req.body.by   req.body.machineCode  req.body.issue (the issue identified after the repair)  req.body.usedParts -> object { pieceCode : number } 
 
-}
+    db.run('UPDATE machineRegistry SET status = "functional" WHERE code = ?', req.body.machineCode, err => {
+        if (err) {
+            console.error(err);
+            return res.status(400).send();
+        }
+
+        db.get('SELECT * FROM repairRequests WHERE machineCode = ?', req.body.machineCode, (err, repairRequest) => {
+            if (err) {
+                console.error(err);
+                return res.status(400).send();
+            }
+
+            console.log(repairRequest);
+
+            db.run('DELETE FROM repairRequests WHERE machineCode = ?', req.body.machineCode, err => {
+                if (err) {
+                    console.error(err);
+                    return res.status(400).send();
+                }
+
+                console.log("repair request deleted");
+
+                Object.entries(req.body.usedParts).forEach(([key, value]) => {
+                    db.get('SELECT * FROM partsRegistry WHERE code = ?', key, (err, row) => {
+                        if (err) {
+                            console.error(err);
+                            return res.status(400).send();
+                        }
+
+                        console.log("iteration complete used parts");
+                        db.run('UPDATE partsRegistry SET pieces = ? WHERE code = ?', [row.pieces - value, key]);
+                    });
+                });
+
+                db.run('INSERT INTO repairHistory (code, repairedBy, requestedBy, partsUsed, issue) VALUES (?, ?, ?, ?, ?)', [req.body.machineCode, repairRequest.by, req.body.by, JSON.stringify(req.body.usedParts), req.body.issue]);
+
+                return res.status(200).send()
+            });
+        });
+    });
+
+})
 
 
 
@@ -141,7 +182,7 @@ const repairComplete = (req) => {//req.body.
 //createRepairRequest({body:{ by: "awd", machineCode: 112, targetGroup: "daw", issue: "wda"}})
 //addTool({body: {code: 9132, cabinetCode: 1, rowCode: 2, pieces: 32}});
 //modifyToolInfo({body: {changeCategory: "cabinetCode", code: 6969, newValue: 3}})
-
+repairComplete({body: {by: "me", machineCode : 314, usedParts : {6969: 10, 9132: 2}, issue: "money"}})
 
 
 app.listen(port, () => {
