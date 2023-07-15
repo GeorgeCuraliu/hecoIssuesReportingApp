@@ -67,12 +67,12 @@ app.post("/createMachine", (req, res) => {//req.body.code  req.body.hangar  req.
 app.post("/deleteMachine", (req, res) => {//req.body.code
 
     db.run(`DELETE FROM machineRegistry WHERE code = "${req.body.code}"`, err => {
-        return res.status(200);
+        return res.status(200).send();
     })
 
 })
 
-app.post("/getMachines", (req) => {
+app.post("/getMachines", (req, res) => {
 
     let query = "SELECT * FROM machineRegistry";
     db.all(query, [], (err, rows) => {

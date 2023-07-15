@@ -12,7 +12,7 @@
     display: flex;
     width: 25vw;
     margin-top: 2vh;
-    margin-left: 45vw;
+    margin-left: 10vw;
     aspect-ratio: 5/1;
     background-color: var(--hecoGray);
     border: 2px solid var(--hecoOrange);

@@ -6,12 +6,16 @@
 }
 html{
     background-color: var(--backgroundOrange);
+    overflow-x: hidden;
 }
 *,::after,::before{
     margin: 0;
     padding: 0;
     border: 0;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+button{
+    cursor: pointer;
 }
 header{
     display: flex;
