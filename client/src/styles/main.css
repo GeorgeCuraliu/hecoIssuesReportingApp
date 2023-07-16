@@ -41,6 +41,20 @@
     align-items: center;
     font-size: 2.5vh;
 }
+.adminButton2{
+    display: flex;
+    width: 10vw;
+    margin-top: 2vh;
+    aspect-ratio: 10/1;
+    background-color: var(--hecoOrange);
+    border: 2px solid var(--hecoGray);
+    color: var(--hecoGray);
+    font-weight: bold;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vh;
+}
 .topText{
     color: #6C6C6C;
     font-size: 3vh;
@@ -51,6 +65,85 @@
 }
 .topSection{
     display: flex;
+}
+.popUpRed{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15vw;
+    margin-top: 10vh;
+    position: fixed;
+    height: 70vh;
+    width: 70vw;
+    background-color: rgba(220, 20, 60, 0.8);
+    border-radius: 20px;
+}
+.inputProb{
+    width: 50vw;
+    height: 5vh;
+    border: 2px solid var(--hecoOrange);
+    border-radius: 10px;
+    margin-top: 0.5vh;
+    margin-left: 7.5vw;
+}
+.dropdownText2{
+    display: flex;
+    margin-left: 8vw;
+    margin-top: 2vh;
+    border-radius: 5px;
+    width: 30vw;
+    height: 7vh;
+    font-size: 3vh;
+    font-weight: bold;    
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-color: white;
+    border: 2px solid var(--hecoOrange);
+}
+.dropdownContent2{
+    display: flex;
+    flex-direction: column;
+    z-index: 9999;
+    position: absolute;
+    margin-left: 8vw;
+    width: 29.8vw;
+    border: 2px solid var(--hecoOrange);
+}
+.jobButton{
+    background-color: beige;
+    color: black;
+    font-weight: bold;
+    height: 2vh;
+}
+.sendButton{
+    display: flex;
+    width: 30vw;
+    margin-top: 5vh;
+    margin-left: 6vw;
+    aspect-ratio: 5/2;
+    background-color: var(--hecoGray);
+    color: black;
+    font-weight: bold;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5vh;
+    border: 2px solid var(--hecoOrange);
+}
+.inputID2{
+    margin-left: 8vw;
+    margin-top: 2vh;
+    padding-top: 1vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    border-radius: 5px;
+    width: 30vw;
+    height: 6vh;
+    font-size: 5vh;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 10px;
+    border: 2px solid var(--hecoOrange);
 }
 @media screen and (min-width: 550px) {
     .toolButton{
@@ -77,5 +170,11 @@
         flex-direction: row;
         align-items: center;
         flex-wrap: wrap;
+    }
+    
+}
+@media screen and (max-width: 1400px) {
+    .adminButton2{
+        display: none;
     }
 }

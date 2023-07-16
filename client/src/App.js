@@ -1,14 +1,13 @@
-import logo from './logo.svg';
-import {Route, Router, Routes} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import LoginPage from './Login/login.js';
-import Header from './GlobalComponents/header';
 import Main from './MainPage/main';
 import Inventory from './Inventory/inventory';
 import MachineList from './machineList/machineList';
 import ProblemList from './ProblemList/problemList';
 import Registry from './Registry/registry';
+import Admin from './Admin/admin';
 function App() {
   return (
     
@@ -20,6 +19,7 @@ function App() {
         <Route path="/machineList" element={<MachineList/>}/>
         <Route path="/problemList" element={<ProblemList/>}/>
         <Route path="/registry" element={<Registry/>}/>
+        <Route path="/admin" element={<Admin />}/>
       </Routes>
     </BrowserRouter>
   );

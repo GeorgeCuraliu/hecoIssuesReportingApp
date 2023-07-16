@@ -67,7 +67,7 @@ app.post("/createMachine", (req, res) => {//req.body.code  req.body.hangar  req.
 app.post("/deleteMachine", (req, res) => {//req.body.code
 
     db.run(`DELETE FROM machineRegistry WHERE code = "${req.body.code}"`, err => {
-        return res.status(200);
+        return res.status(200).send();
     })
 
 })
@@ -85,8 +85,31 @@ app.get("/getMachines", (req, res) => {
 
 })
 
+app.get("/getRepairs", (req, res) => {
 
+    let query = "SELECT * FROM repairRequests";
+    db.all(query, [], (err, rows) => {
+        if(err){
+            return res.status(404)
+        }else{
+            return res.status(200).send(rows);
+        }
+    })
 
+})
+
+app.get("/getUsers", (req, res) => {
+
+    let query = "SELECT * FROM users";
+    db.all(query, [], (err, rows) => {
+        if(err){
+            return res.status(404)
+        }else{
+            return res.status(200).send(rows);
+        }
+    })
+
+})
 
 app.post("/createRepairRequest", (req, res) => {//req.body.machineCode  req.body.by  req.body.targetGroup  req.body.issue
 
@@ -179,10 +202,12 @@ app.post("/repairComplete", (req, res) => {//req.body.by   req.body.machineCode 
 //createMachine({body: {code: 112, hangar: "Dwa", maintenance: "dwasdawd"}})
 //deleteMachine({body: {code: 312}})
 //getMachines()
+//getRepairs()
+//getUsers()
 //createRepairRequest({body:{ by: "awd", machineCode: 112, targetGroup: "daw", issue: "wda"}})
 //addTool({body: {code: 9132, cabinetCode: 1, rowCode: 2, pieces: 32}});
 //modifyToolInfo({body: {changeCategory: "cabinetCode", code: 6969, newValue: 3}})
-repairComplete({body: {by: "me", machineCode : 314, usedParts : {6969: 10, 9132: 2}, issue: "money"}})
+//repairComplete({body: {by: "me", machineCode : 314, usedParts : {6969: 10, 9132: 2}, issue: "money"}})
 
 
 app.listen(port, () => {

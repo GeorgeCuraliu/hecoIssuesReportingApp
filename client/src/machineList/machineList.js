@@ -24,7 +24,7 @@ const MachineList = () => {
 
 
     useEffect(() => {
-        axios.post("http://localhost:6969/getMachines").then((response) => {
+        axios.get("http://localhost:6969/getMachines").then((response) => {
             setMachines(response.data);
         });
     }, []);

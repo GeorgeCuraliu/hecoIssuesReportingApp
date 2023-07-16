@@ -80,7 +80,8 @@
     height: 6vh;
     font-size: 3vh;
     justify-content: center;
-    text-align: center  ;
+    text-align: center;
+    border: 2px solid var(--hecoOrange);
 }
 .inputDate::placeholder{
     font-size: 3vh;
@@ -103,6 +104,7 @@
     justify-content: center;
     text-align: center;
     letter-spacing: 10px;
+    border: 2px solid var(--hecoOrange);
 }
 .dropdown{
     position: relative;
@@ -120,6 +122,7 @@
     text-align: center;
     align-items: center;
     background-color: white;
+    border: 2px solid var(--hecoOrange);
 }
 .dropdownText:hover{
     border-end-end-radius: 0px;
@@ -131,7 +134,8 @@
     z-index: 9999;
     position: absolute;
     margin-left: 8vw;
-    width: 10vw;
+    width: 9.8vw;
+    border: 2px solid var(--hecoOrange);
 }
 .hangerButton{
     background-color: beige;
@@ -155,6 +159,7 @@
     justify-content: center;
     align-items: center;
     font-size: 5vh;
+    border: 2px solid var(--hecoOrange);
 }
 @media screen and (max-width: 550px) {
     .addButton{
