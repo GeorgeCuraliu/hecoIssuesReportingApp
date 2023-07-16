@@ -13,6 +13,7 @@ const ProblemList = () => {
     const [repairs, setRepairs] = useState([]);
     const [i, setI] = useState(1);
     const [pieces, setPieces] = useState([1]);
+    const [parts, setParts] = useState({});
     const [num, setNum] = useState(); 
     const [text, setText] = useState(); 
 
@@ -39,6 +40,12 @@ const ProblemList = () => {
         setPop(false);
         console.log(num, text)
     }
+    const updateData3 = (e, index) => {
+        let temp = e.target.value;
+        let tempObj = {partId: temp};
+        setParts(tempObj);
+        console.log(parts);
+    }
     return (
         <div>
             <Header />
@@ -60,7 +67,7 @@ const ProblemList = () => {
                                                 <button className="plus" onClick={() => {updatePieces(1)}}>+</button>
                                             </div>
                                             <div className="flex">
-                                                <input placeholder="Piece Name" className="inputPiece"/>
+                                                <input placeholder="Piece Name" className="inputPiece" onChange={(e) => {updateData3(e, index)}}/>
                                                 <input placeholder="Number" className="inputPiece"/>
                                             </div>
                                         </div>
