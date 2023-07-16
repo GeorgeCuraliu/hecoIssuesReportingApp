@@ -4,6 +4,12 @@
     --hecoGray: #ececec;
     --hecoGrayDark: #6C6C6C;
 }
+input{
+    overflow-x: auto;
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+}
 html{
     background-color: var(--backgroundOrange);
     overflow-x: hidden;

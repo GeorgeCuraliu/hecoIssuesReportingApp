@@ -1,0 +1,45 @@
+.popUpGreen{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15vw;
+    margin-top: 5vh;
+    position: fixed;
+    height: 70vh;
+    width: 70vw;
+    background-color: rgba(77, 202, 102, 0.8);
+    border-radius: 20px;
+}
+.repairText{
+    font-size: 5vh;
+    margin-top: 2vh;
+    margin-left: 5vw;
+    color: white;
+}
+.plus{
+    font-size: 5vh;
+    margin-top: 2vh;
+    margin-left: 1vw;
+    color: var(--hecoOrange);
+    background-color: var(--backgroundOrange);
+    border-radius: 100%;
+    width: 4%;
+    text-align: center;
+}
+.inputPiece{
+    margin-left: 3vw;
+    margin-top: 2vh;
+    padding-top: 1vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    border-radius: 5px;
+    width: 7vw;
+    height: 4vh;
+    font-size: 2.5vh;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid var(--hecoOrange);
+}
+.overflow{
+    overflow-y: scroll;
+    height: 21.75%;
+}
