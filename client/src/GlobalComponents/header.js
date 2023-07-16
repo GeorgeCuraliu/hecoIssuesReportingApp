@@ -4,8 +4,8 @@ import Heco2 from "../Images/heco-logo.png";
 const Header = () => {
     return (
         <header>
-            <img className="logo" src={Heco}/>
-            <img className="logo2" src={Heco2}/>
+            <img alt="" className="logo" src={Heco}/>
+            <img alt="" className="logo2" src={Heco2}/>
             
         </header>
         

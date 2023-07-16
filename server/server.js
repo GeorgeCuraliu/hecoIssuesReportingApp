@@ -111,6 +111,19 @@ app.get("/getUsers", (req, res) => {
 
 })
 
+app.get("/getParts", (req, res) => {
+
+    let query = "SELECT * FROM partsRegistry";
+    db.all(query, [], (err, rows) => {
+        if(err){
+            return res.status(404)
+        }else{
+            return res.status(200).send(rows);
+        }
+    })
+
+})
+
 app.post("/createRepairRequest", (req, res) => {//req.body.machineCode  req.body.by  req.body.targetGroup  req.body.issue
 
     db.get("SELECT * FROM repairRequests WHERE machineCode = ?", [req.body.machineCode], (err, row) => {
@@ -138,12 +151,20 @@ app.post("/addTool", (req, res) => {        //req.body.code     req.body.cabinet
 
 })
 
-app.post("/modifyToolInfo", (req, res) => {  //req.body.code  req.body.changeCategory   req.body.newValue
-
-    db.run(`UPDATE partsRegistry SET ${req.body.changeCategory} = "${req.body.newValue}" WHERE code = "${req.body.code}"`, err => {
-        if(err) return res.status(400).send();
-        
+app.post("/deleteTool", (req, res) => {  //req.body.code
+    db.run(`DELETE FROM partsRegistry WHERE code = "${req.body.code}"`, err => {
         return res.status(200).send();
+    })
+})
+
+app.post("/modifyToolInfo", (req, res) => {  //req.body.code  req.body.changeCategory []  req.body.newValue []
+
+    req.body.newValue.forEach((element, index) => {
+        db.run(`UPDATE partsRegistry SET ${req.body.changeCategory[index]} = "${req.body.newValue[index]}" WHERE code = ${req.body.code}`, err => {
+            if(err) return res.status(400).send();
+            
+            return res.status(200).send();
+        })
     })
 
 })
@@ -204,8 +225,10 @@ app.post("/repairComplete", (req, res) => {//req.body.by   req.body.machineCode 
 //getMachines()
 //getRepairs()
 //getUsers()
+//getParts()
 //createRepairRequest({body:{ by: "awd", machineCode: 112, targetGroup: "daw", issue: "wda"}})
 //addTool({body: {code: 9132, cabinetCode: 1, rowCode: 2, pieces: 32}});
+//deletetool({body: {code: 231}})
 //modifyToolInfo({body: {changeCategory: "cabinetCode", code: 6969, newValue: 3}})
 //repairComplete({body: {by: "me", machineCode : 314, usedParts : {6969: 10, 9132: 2}, issue: "money"}})
 

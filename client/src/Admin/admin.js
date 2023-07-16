@@ -49,7 +49,8 @@ const Admin = () => {
 
     const addAccount = (props) => {
         if(props[0] && props[1] && props[2] && props[3] && props[4]) {
-            axios.post("http://localhost:6969/createAccount", {username: props[0], password:props[1], name:props[2], gmail:props[3], admin:props[4]}).then((response) => {
+            axios.post("http://localhost:6969/createAccount", {username: props[0], password:props[1], name:props[2], gmail:props[3], admin:props[4]})
+            .then((response) => {
                 if(response.status === 200){
                     setPop(false);
                     setError(false);
