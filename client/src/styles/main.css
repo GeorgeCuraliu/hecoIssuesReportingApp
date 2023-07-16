@@ -43,7 +43,7 @@
 }
 .adminButton2{
     display: flex;
-    width: 10vw;
+    width: fit-content;
     margin-top: 2vh;
     aspect-ratio: 10/1;
     background-color: var(--hecoOrange);
@@ -173,7 +173,7 @@
     }
     
 }
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 700px) {
     .adminButton2{
         display: none;
     }

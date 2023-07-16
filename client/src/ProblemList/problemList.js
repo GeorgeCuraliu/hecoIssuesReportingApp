@@ -4,7 +4,7 @@ import Header from "../GlobalComponents/header";
 import Body from "../GlobalComponents/body";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 const ProblemList = () => {
     
     const nav = useNavigate();
@@ -19,6 +19,7 @@ const ProblemList = () => {
 
     useEffect(() => {
         axios.get("http://localhost:6969/getRepairs").then((response) => {
+            console.log(response.data)
             setRepairs(response.data);
         });
     }, [])
@@ -37,15 +38,41 @@ const ProblemList = () => {
         pieces.push(i);
     }
     const completeRepair = () => {
+
         setPop(false);
-        console.log(num, text)
+        console.log(num, text);
+
+        let tempObj ={};
+        Object.values(parts).forEach(val => {
+            tempObj[val[0]] =val[1];
+        })
+        console.log({ by:"awd", machineCode: num, issue: text, usedParts: tempObj})
+        axios.post("http://localhost:6969/repairComplete", { by:"awd", machineCode: num, issue: text, usedParts: tempObj})
+        .then(response => {
+            console.log(response);
+            let tempObj = [...repairs];
+            tempObj.every((element, index) => {
+                if(element.machineCode == num){
+                    tempObj.splice(index, 1);
+                    console.log("deleting request " + index)
+                    setRepairs([...tempObj])
+                    return false;
+                }
+                return true;
+            })
+        })
+
     }
-    const updateData3 = (e, index) => {
-        let temp = e.target.value;
-        let tempObj = {partId: temp};
-        setParts(tempObj);
+    const updateData3 = (e, index, n) => {//n => id or number
+        let tempObj = {...parts};
+        if(!tempObj[index]){
+            tempObj[index] = [];
+        }
+        tempObj[index][n] = e;
+        setParts({...tempObj});
         console.log(parts);
     }
+
     return (
         <div>
             <Header />
@@ -56,23 +83,25 @@ const ProblemList = () => {
                             <div className="repairText">Cod Masina</div>
                             <input value={num} className="inputID" type = "number" placeholder="XXX" maxLength="3" onChange={(e) => {updateData(e)}}/>
                             <div className="overflow">
+                            <div>
+                                <div className="flex">
+                                    <div className="repairText">Piese Folosite</div>
+                                    <button className="plus" onClick={() => {updatePieces(1)}}>+</button>
+                                </div>
                                 {pieces.map((value, index) => {
                                     if(!value){
-                                        return;
+                                        return null;
                                     }
                                     return(
-                                        <div>
+                                        
                                             <div className="flex">
-                                                <div className="repairText">Piese Folosite</div>
-                                                <button className="plus" onClick={() => {updatePieces(1)}}>+</button>
+                                                <input placeholder="ID" className="inputPiece" onChange={(e) => {updateData3(e.target.value, index, 0)}}/>
+                                                <input placeholder="Number" className="inputPiece" onChange={(e) => {updateData3(e.target.value, index, 1)}}/>
                                             </div>
-                                            <div className="flex">
-                                                <input placeholder="Piece Name" className="inputPiece" onChange={(e) => {updateData3(e, index)}}/>
-                                                <input placeholder="Number" className="inputPiece"/>
-                                            </div>
-                                        </div>
+                                        
                                     );
                                 })}
+                            </div>
                             </div> 
                             
                             <div className="repairText">Observatii</div>
@@ -95,7 +124,7 @@ const ProblemList = () => {
                         
                         {repairs.map((value, index) => {
                             if(!value){
-                                return;
+                                return null;
                             }
                             return(
                                 <div className="tableContent" key={index} onClick={() => {}}>

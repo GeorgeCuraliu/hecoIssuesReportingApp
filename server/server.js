@@ -144,7 +144,7 @@ app.post("/createRepairRequest", (req, res) => {//req.body.machineCode  req.body
 
 app.post("/addTool", (req, res) => {        //req.body.code     req.body.cabinetCode   req.body.rowCode   req.body.pieces
 
-    db.run(`INSERT INTO partsRegistry(code, cabinetCode, rowCode, pieces) VALUES ("${req.body.code}", "${req.body.cabinetCode}", "${req.body.rowCode}", "${req.body.pieces}")`, err => {
+    db.run(`INSERT INTO partsRegistry(code, cabinetCode, rowCode, pieces) VALUES (${req.body.code}, ${req.body.cabinetCode}, ${req.body.rowCode}, ${req.body.pieces})`, err => {
         console.log("added tool")
         return res.status(200).send()
     })
@@ -171,6 +171,8 @@ app.post("/modifyToolInfo", (req, res) => {  //req.body.code  req.body.changeCat
 
 app.post("/repairComplete", (req, res) => {//req.body.by   req.body.machineCode  req.body.issue (the issue identified after the repair)  req.body.usedParts -> object { pieceCode : number } 
 
+    console.log(req.body.machineCode + " mc");
+
     db.run('UPDATE machineRegistry SET status = "functional" WHERE code = ?', req.body.machineCode, err => {
         if (err) {
             console.error(err);
@@ -194,14 +196,14 @@ app.post("/repairComplete", (req, res) => {//req.body.by   req.body.machineCode 
                 console.log("repair request deleted");
 
                 Object.entries(req.body.usedParts).forEach(([key, value]) => {
-                    db.get('SELECT * FROM partsRegistry WHERE code = ?', key, (err, row) => {
+                    db.get(`SELECT * FROM partsRegistry WHERE code = ${key}`, (err, row) => {
                         if (err) {
                             console.error(err);
                             return res.status(400).send();
                         }
-
+                        console.log(row);
                         console.log("iteration complete used parts");
-                        db.run('UPDATE partsRegistry SET pieces = ? WHERE code = ?', [row.pieces - value, key]);
+                        db.run(`UPDATE partsRegistry SET pieces = ${row.pieces - value} WHERE code = ${key}`);
                     });
                 });
 

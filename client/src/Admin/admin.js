@@ -40,7 +40,16 @@ const Admin = () => {
     const updateGmail = (e) => {setGmail(e.target.value);}
 
 
-
+    const deleteUser = (user) => {
+        console.log(users.indexOf(user));
+        axios.post("http://localhost:6969/deleteUser", {username: user.username})
+            .then((response) => {
+                console.log(response)
+                let tempArr = [...users];
+                tempArr.splice(users.indexOf(user), 1);
+                setUsers([...tempArr]);
+            });
+    }
 
     const setType = () => {
         setText(true);
@@ -54,6 +63,9 @@ const Admin = () => {
                 if(response.status === 200){
                     setPop(false);
                     setError(false);
+                    let tempArr = [...users];
+                    tempArr.push({username: props[0], password:props[1], name:props[2], gmail:props[3], admin:props[4]})
+                    setUsers([...tempArr]);
                 }
             });
         } else {
@@ -108,7 +120,7 @@ const Admin = () => {
                         
                         {users.map((value, index) => {
                             if(!value){
-                                return;
+                                return null;
                             }
                             return(
                                 <div className="userCard" key={index}>
@@ -118,7 +130,7 @@ const Admin = () => {
                                         <div className="infoText">Name: <span style={{fontWeight:"bold"}}>{value.name}</span></div>
                                         <div className="infoText">Group: <span style={{fontWeight:"bold"}}>{value.admin}</span></div>
                                     </div>
-                                    <img src={XMark} alt = "something" className="xImg"/>
+                                    <img onClick={() => {deleteUser(value)}} src={XMark} alt = "something" className="xImg"/>
                                 </div>
                             );
                         })}
